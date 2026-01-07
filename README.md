@@ -39,6 +39,7 @@ Aplicacion minima en Next.js para exponer la variable de entorno `ENVARUNO` en u
 
 ## Endpoints
 
+- `GET /api/env?name=ENVARUNO` devuelve variantes y valores para depurar.
 - `GET /api/envaruno` devuelve `{ "ENVARUNO": "..." }`.
 - `GET /api/health` devuelve `ok`.
-- `GET /` muestra el valor de `ENVARUNO` en la pagina.
+- `GET /` permite escribir la variable a mostrar y lista variantes comunes.
