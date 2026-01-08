@@ -1,6 +1,6 @@
 # hostinger-env-next
 
-Aplicacion minima en Next.js para exponer la variable de entorno `ENVARUNO` en una app de JavaScript dentro de Hostinger.
+Aplicacion minima en Next.js para validar variables de entorno server-only en Hostinger.
 
 ## Requisitos
 
@@ -16,10 +16,10 @@ Aplicacion minima en Next.js para exponer la variable de entorno `ENVARUNO` en u
 
 2. En Hostinger, define la variable `ENVARUNO` en el panel de variables de entorno.
 
-   Para desarrollo local, copia `.env.example` a `.env.local` y ajusta el valor:
+   Para desarrollo local o despliegue por archivo, copia `.env.example` a `.env` (o `.env.production`) y ajusta el valor:
 
    ```bash
-   cp .env.example .env.local
+   cp .env.example .env
    ```
 
 ## Ejecucion
@@ -39,7 +39,7 @@ Aplicacion minima en Next.js para exponer la variable de entorno `ENVARUNO` en u
 
 ## Endpoints
 
-- `GET /api/env?name=ENVARUNO` devuelve variantes y valores para depurar.
-- `GET /api/envaruno` devuelve `{ "ENVARUNO": "..." }`.
+- `GET /api/envaruno` devuelve `{ "configured": true, "length": 4 }`.
+- `GET /api/envaruno?show=1` devuelve el valor (solo para debug).
 - `GET /api/health` devuelve `ok`.
-- `GET /` permite escribir la variable a mostrar y lista variantes comunes.
+- `GET /` muestra si `ENVARUNO` esta configurada.
