@@ -1,6 +1,6 @@
 # hostinger-env-next
 
-Aplicacion minima en Next.js para validar variables de entorno server-only en Hostinger.
+Aplicacion minima en Next.js para hosting estatico (Business). Usa variables `NEXT_PUBLIC_` inyectadas en el build.
 
 ## Requisitos
 
@@ -14,12 +14,12 @@ Aplicacion minima en Next.js para validar variables de entorno server-only en Ho
    npm install
    ```
 
-2. En Hostinger, define la variable `ENVARUNO` en el panel de variables de entorno.
+2. En Hostinger, define la variable `NEXT_PUBLIC_ENVARUNO` en el panel de variables de entorno (build).
 
-   Para desarrollo local o despliegue por archivo, copia `.env.example` a `.env` (o `.env.production`) y ajusta el valor:
+   Para desarrollo local o despliegue por archivo, copia `.env.example` a `.env.local` (dev) o `.env.production` (build) y ajusta el valor:
 
    ```bash
-   cp .env.example .env
+   cp .env.example .env.production
    ```
 
 ## Ejecucion
@@ -30,16 +30,16 @@ Aplicacion minima en Next.js para validar variables de entorno server-only en Ho
   npm run dev
   ```
 
-- Produccion:
+- Produccion (export estatico):
 
   ```bash
   npm run build
-  npm start
   ```
 
-## Endpoints
+  El build genera la carpeta `out/`. Configura Hostinger con:
+  - Comando de compilacion: `npm run build`
+  - Directorio de salida: `out`
 
-- `GET /api/envaruno` devuelve `{ "configured": true, "length": 4 }`.
-- `GET /api/envaruno?show=1` devuelve el valor (solo para debug).
-- `GET /api/health` devuelve `ok`.
-- `GET /` muestra si `ENVARUNO` esta configurada.
+## Uso
+
+- `GET /` muestra el valor de `NEXT_PUBLIC_ENVARUNO` embebido en el build.
